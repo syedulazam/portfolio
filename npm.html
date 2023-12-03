@@ -1,0 +1,101 @@
+<!--
+    -> Introduction to NPM <-
+
+    1. npm stands for Node package manager. It is something which is used for sharing JavaScript files. Just like how we have source code of websites and can copy and 
+       edit that code, similarly there is the npm which allows us to copy the JavaScript codes and make changes to it. 
+    
+    2. NPM has a npm registery which has all the packages submitted and even libraries. These packages consist of the js file and the json file. A json file is a meta 
+       file which describes the js file and also manages them. Packages are also called modules.
+    
+    3. There are two demerits of using the npm. One, it is not always the case that all the packages that we get are made by experts. Thus, the js code may not be 
+       upto the mark. Secondly,  when we try to get the package, we get a lot of files. This will take up a lot of storage. But we want to ensure that the less 
+       space is occupied by the files so that the website runs fast.
+
+    4. yarn is also the same thing as the npm. 
+    
+    5. There are three types of packages: The package which can be used at the front end. the second type is the one which gives us new commands that can be used in the
+       command line. The third type is where you can use the packages at the backend. previously, npm was used in the backend. But since they got so popular, we can
+       now use it in the front end.
+
+    -> Installing and using an using packages <-
+    
+    1. The node.js was created using the V8 engine, which is the same engine used in google, to allow JavaScript can be read and run outside the browser.
+    
+    2. Using the command npm install react, we can install react. But in some computers, we could get an error which says something related to permission issues.
+       This issue arises because you may not be the administrator. So we need to run as the administrator. So the command for that is sudo npm install react. This is 
+       not just applicable to installing react, but applicable to installing anything globally from the npm. We will discuss about what I mean by globally later on.
+    
+    3. To create a json file in a directpry, we just need to use the command npm init. They will ask us some q. We just need to tap enter and "yes" at the end and our
+       json file will be created.
+
+    4. There are two ways of downloading the npm packages: locally and globally. locally means, the package which gets installed can be used only within the files of 
+       that particular directory we are in. The command for local is -l. To install local packages, the command is npm install -l package_name When we download local 
+       packages from the npm, a node folder is creates in the directory where we installed the local package. Under this package, there are many methods which will be 
+       inside that package. The name of the package we installed will be under the heading "dependency" in the json file. Dependencies have the names of all the packages 
+       that has been installed into the directory.  Whereas global packages are those which can be used on any directory once we command it into our pc using the command 
+       prompt. The command for global is -g. When we download s. For downloading global packages, it is normally npm install -g package_name.  But if it doesn't work,
+       then use the command npx package_name. To use the global package, we need to use the command npx package_name.
+       
+    5. We downloaded global packages that we downloaded was the live-server package which allows us to host the website live using the localhost. To terminate from the 
+       localhost, we need to use tap "ctrl + c" and then we will be given the options y/n. We just need to tap n to exit. We have even installed browserify. By using 
+       browserify, we can convert our js file into a bundle file (since browserify is responsible for converting the js file into a bundle file). The command for 
+       using borwserify after we install it is "npx browserify jsfile_name.js > bundle.js". After using that command, we must change the name of the js file, in the 
+       script, to bundle.js in the HTML file. What we did by is that we wrote the statement var load = require("lodash")
+       By doing this, we are converting the backgroundGenerator.js file into the bundle.js file with the methods of the lodash package being used wlong with it. By
+       doing that, we get 
+
+       ƒ lodash(value) {
+      if (isObjectLike(value) && !isArray(value) && !(value instanceof LazyWrapper)) {
+        if (value instanceof LodashWrapper) {
+          return value;
+        }
+        if (hasO…
+
+       printed in to the console. This indicates that the lodash methods have been successfully imported from npm into the bundle.js file. In fact, the bundle.js file
+       has also been created in the directory.
+
+    6. We downloaded lodash as a local package. This package is has a lot of methods or functions that can be used on the JavaScript files, which we may not have used
+       or even heard of. 
+
+    7. We used one of the methods of lodash called "without". Since we used a new mehtod, we need to use this command again: npx browserify jsfile_name.js > bundle.js 
+       and then npx live-server
+
+    8. Now it was necessary to use the browserify to implement the lodash is because lodash is a package from the npm. As we know, npm was actually used only for the
+       backend previously. But now, it is possible to use it in the frontend as well with the help of browserify. It's not possible without browserify because the 
+       require term cannot be applied on the lodash without the use of browersify since that is the module bundler (the one which divides the js files into different
+       modules or packages). But at the same time, we can apply the browserify command on the js file even without the require term as it's function is to just 
+       convert the js file into the bundle.js file and require is just an import statement which is used to import methods to be part of the bundling.
+
+    9. There is a huge benefit of using module bundler: The dependencies of different js files would be different. These depenendence has different packages as we know 
+       and these packages have a lot of files in it. But having a lot of files in it mean a lot of HTTPS requests from the server. This reduces the speed of the website.
+       But browserfify converts all these dependencies into one along with all the files in it. Thus the HTTPS request will be done just once, optimizing our website a
+       lot.
+
+    10. It is better to not install packages which we don't need since that will lead to increase in the bundle size and that could als oreduce the speed of the website.
+
+    11. the node_module folder is important as it allows us to see the list of all the packages that has been installed.
+
+    12. Some facts: http://127.0.0.1:8080/backgroundGenerator.html in this live-server website of the backgroundGenerator, 127.0.0.1 represents localhost. So wven if
+        we replace 127.0.0.1 with localhost and refresh, we would still get the website.
+   
+    13. Another fact. The version of the package that you see in the dependecny in the json file is called semver (which stands for semantic version). Let's
+        consider 4.17.4. 17 represents any minor changes which has occured and won't affect any website even if we are using a little lower number. The first 4 
+        represents if any major change has occured in that package. This number has a huge impact on a website. So for example, if it was 4.17.4 but the latest one was 
+        5.17.4, then that will affect the website a lot. It may not work also beacause it's a major change. the second 4 represents any debugging that was done. not
+        a major issue for the user.
+    
+    14. In the json file, we have a term called "script". in this, we can create a command which can store in built commands. For example, we created the build command
+        which is storing the npx live-server command. So when we use the command npm run build, we get the same result as npx live-server.In fact, we can even add two
+        in-built commands. For example, build2. It is necessary to use npm run when we create our own commands.
+    
+    -> Why update pacakges <-
+
+    1. When we have uplodaed all our files into GitHub, it is neccessary to ensure that all the packages that are there in the dependency aare upto the latest version
+       or atleast the first number of the semver is upto the latest one. If not, then we will get security issues. there is an option for automated security fixes
+       which will fix the security issue.
+   
+    -> Exercise: Create a Portfolio <-
+
+    1. There is an option called fork, which allows us to copy the code and automatically create a new git repository and paste it over there.
+           
+-->
